@@ -3,6 +3,8 @@ require "compostr/version"
 require 'ostruct'
 require 'yaml'
 
+require 'compostr/logging'
+
 require 'compostr/custom_field_value'
 require 'compostr/custom_post_type'
 
