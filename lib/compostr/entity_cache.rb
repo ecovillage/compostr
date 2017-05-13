@@ -17,10 +17,9 @@ module Compostr
     # only once) and looks through them until one with uuid found.
     def in_mem_lookup uuid
       # TODO index (hash) on (uu)id, access index only
-      @full_data ||= @cpt_class.get_all_posts
-      if @full_data.length == 10_000
+      if full_data.length == 10_000
         # warn heavily
-      elsif @full_data.length > 1000
+      elsif full_data.length > 1000
         # warn softly
       end
       uuid_selector = lambda do |x|
@@ -28,7 +27,7 @@ module Compostr
           f["key"] == "uuid" && f["value"] == uuid
         end
       end
-      @full_data.find &uuid_selector
+      full_data.find &uuid_selector
       #@full_data.find &WPEvent::Lambdas.with_cf_uuid(uuid)
     end
 
@@ -54,22 +53,16 @@ module Compostr
 
     # init and return @name_id_map
     def name_id_map
-      if @name_id_map.nil?
-        @name_id_map = @cpt_class.name_pid_map
-      end
-      @name_id_map || {}
+      @name_id_map ||= full_data.map {|p| [p["post_title"], p["post_id"]]}.to_h
     end
 
     def uuid_id_map
-      if @uuid_id_map.nil?
-        @uuid_id_map = @cpt_class.uuid_pid_map
-      end
-      @uuid_id_map || {}
+      @uuid_id_map || uuid_pid_map
     end
 
     # Burn-in cache
     def full_data
-      @full_data ||= @cpt_class.get_all_posts
+      @full_data ||= get_all_posts
     end
 
     # Select entities for which given selector returns true
@@ -77,5 +70,24 @@ module Compostr
     def select_by selector
       full_data.select &selector
     end
+
+    private
+    def get_all_posts
+      WPEvent::wp.getPosts blog_id: 0,
+        filter: { post_type: @cpt_class.post_type, number: 100_000 }
+    end
+
+    def name_pid_map
+      full_data.map {|p| [p["post_title"], p["post_id"]]}.to_h
+    end
+
+    def uuid_pid_map
+      full_data.map do |post|
+        # TODO lambda
+        uuid = post["custom_fields"].find {|f| f["key"] == "uuid"}&.fetch("value", nil)
+        [uuid, post["post_id"]]
+      end.to_h
+    end
+
   end
 end
