@@ -1,8 +1,8 @@
 # Compostr
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/compostr`. To experiment with that code, run `bin/console` for an interactive prompt.
+Compostr is extracted code from the `wp_event` gem, a solution to feed a specific wordpress instance with specific Custom Post Type instances.
 
-TODO: Delete this and the text above, and describe your gem
+Compostr is a somewhat weirdly engineered wrapper to decorate ruby classes such that they can be pushed to (or fetched from) a wordpress installation that defines corresponing CPTs (Custom Post Types).
 
 ## Installation
 
@@ -22,7 +22,13 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### In a nutshell
+
+Define a CPT class like this: (TODO: show examples from test case)
+
+### Logger
+
+Use Compostr::logger if you want to feed Compostrs logs into your main applications log or redirect them somewhere.
 
 ## Development
 
@@ -34,3 +40,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/compostr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
+That said, just drop me a line.
