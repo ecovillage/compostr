@@ -1,15 +1,15 @@
 module Compostr
   class EntityCache
-    attr_accessor :cpt, :name_id_map, :uuid_id_map
+    attr_accessor :cpt_class, :name_id_map, :uuid_id_map
     attr_accessor :full_data
 
-    # cpt has to be a Compostr::PostType extending class/module
-    def initialize cpt
-      @cpt         = cpt
+    # cpt_class has to be descendant of Compostr::CustomPostType
+    def initialize cpt_class
+      @cpt_class   = cpt_class
       @name_id_map = nil
       @uuid_id_map = nil
-      if !cpt.is_a? Compostr::PostType
-        raise "Unsupported Entity for EntityCache: #{cpt.class}"
+      if !(@cpt_class < Compostr::CustomPostType)
+        raise "Unsupported Entity for EntityCache: #{@cpt_class}"
       end
     end
 
@@ -17,7 +17,7 @@ module Compostr
     # only once) and looks through them until one with uuid found.
     def in_mem_lookup uuid
       # TODO index (hash) on (uu)id, access index only
-      @full_data ||= cpt.get_all_posts
+      @full_data ||= @cpt_class.get_all_posts
       if @full_data.length == 10_000
         # warn heavily
       elsif @full_data.length > 1000
@@ -55,21 +55,21 @@ module Compostr
     # init and return @name_id_map
     def name_id_map
       if @name_id_map.nil?
-        @name_id_map = cpt.name_pid_map
+        @name_id_map = @cpt_class.name_pid_map
       end
       @name_id_map || {}
     end
 
     def uuid_id_map
       if @uuid_id_map.nil?
-        @uuid_id_map = cpt.uuid_pid_map
+        @uuid_id_map = @cpt_class.uuid_pid_map
       end
       @uuid_id_map || {}
     end
 
     # Burn-in cache
     def full_data
-      @full_data ||= cpt.get_all_posts
+      @full_data ||= @cpt_class.get_all_posts
     end
 
     # Select entities for which given selector returns true
