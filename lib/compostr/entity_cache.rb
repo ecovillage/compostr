@@ -3,12 +3,12 @@ module Compostr
     attr_accessor :cpt, :name_id_map, :uuid_id_map
     attr_accessor :full_data
 
-    # cpt has to be a WPEvent::PostType extending class/module
+    # cpt has to be a Compostr::PostType extending class/module
     def initialize cpt
       @cpt         = cpt
       @name_id_map = nil
       @uuid_id_map = nil
-      if !cpt.is_a? WPEvent::PostType
+      if !cpt.is_a? Compostr::PostType
         raise "Unsupported Entity for EntityCache: #{cpt.class}"
       end
     end
@@ -23,7 +23,13 @@ module Compostr
       elsif @full_data.length > 1000
         # warn softly
       end
-      @full_data.find &WPEvent::Lambdas.with_cf_uuid(uuid)
+      uuid_selector = lambda do |x|
+        x["custom_fields"].find do |f|
+          f["key"] == "uuid" && f["value"] == uuid
+        end
+      end
+      @full_data.find &uuid_selector
+      #@full_data.find &WPEvent::Lambdas.with_cf_uuid(uuid)
     end
 
     def id_of_name name
