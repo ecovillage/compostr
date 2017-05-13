@@ -10,6 +10,8 @@ require 'compostr/custom_post_type'
 
 require 'compostr/entity_cache'
 
+require 'compostr/syncer'
+
 # Get the loggers, get the config, expose WP
 module Compostr
   def self.load_conf
