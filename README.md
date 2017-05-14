@@ -24,7 +24,24 @@ Or install it yourself as:
 
 ### In a nutshell
 
-Define a CPT class like this: (TODO: show examples from test case)
+Define a CPT class like this (you still need Wordpress PHP code!):
+
+    class ProgrammingLanguage < Compostr::CustomPostType
+      wp_post_type 'programming_language' # `post_type` as known by WP
+      wp_custom_field_single 'awesomeness' # 'meta' field in WP, just one value is queried and set
+      wp_custom_field_multi 'further_links' # 'meta' field(s) in WP, can have multiple values
+    end
+
+Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically have `content`, `id` and `title` to (corresponding to the Wordpress `post_content`, `id` and `post_title`).
+
+### Configuration
+
+Global configuration is given in `compostr.conf`, where connection information to the Wordpress installation is defined:
+
+    # compostr.conf
+    host:     "wordpress.mydomain"
+    username: "admin"
+    password: "buzzword"
 
 ### Logger
 
