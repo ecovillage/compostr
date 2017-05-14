@@ -2,6 +2,8 @@
 
 Compostr is extracted code from the `wp_event` gem, a solution to feed a specific wordpress instance with specific Custom Post Type instances.
 
+Its a heavy WIP.
+
 Compostr is a somewhat weirdly engineered wrapper to decorate ruby classes such that they can be pushed to (or fetched from) a wordpress installation that defines corresponing CPTs (Custom Post Types).
 
 ## Installation
@@ -34,6 +36,8 @@ Define a CPT class like this (you still need Wordpress PHP code!):
 
 Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically have `content`, `id` and `title` to (corresponding to the Wordpress `post_content`, `id` and `post_title`).
 
+Compostr comes prepared with `UUID` information of CPT instances, to e.g. distinctlive identify entities across different WP instances where entities might have different `post_id`s..
+
 ### Configuration
 
 Global configuration is given in `compostr.conf`, where connection information to the Wordpress installation is defined:
@@ -46,6 +50,10 @@ Global configuration is given in `compostr.conf`, where connection information t
 ### Logger
 
 Use Compostr::logger if you want to feed Compostrs logs into your main applications log or redirect them somewhere.
+
+### EntityCache
+
+Until you provide some Wordpress PHP code to querie custom post types via their Custom (meta) Fields, to query and work with CPTs, all data will be read into memory using `Compostr::EntityCache`.
 
 ## Development
 
