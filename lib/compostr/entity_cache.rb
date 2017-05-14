@@ -57,7 +57,7 @@ module Compostr
     end
 
     def uuid_id_map
-      @uuid_id_map || uuid_pid_map
+      @uuid_id_map ||= uuid_pid_map
     end
 
     # Burn-in cache
@@ -71,14 +71,19 @@ module Compostr
       full_data.select &selector
     end
 
+    def by_post_id id
+      if @full_data.nil?
+        Compostr::wp.getPost blog_id: 0,
+                              post_id: id
+      else
+        raise
+      end
+    end
+
     private
     def get_all_posts
       Compostr::wp.getPosts blog_id: 0,
         filter: { post_type: @cpt_class.post_type, number: 100_000 }
-    end
-
-    def name_pid_map
-      full_data.map {|p| [p["post_title"], p["post_id"]]}.to_h
     end
 
     def uuid_pid_map
