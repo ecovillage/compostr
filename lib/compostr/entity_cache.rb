@@ -73,7 +73,7 @@ module Compostr
 
     private
     def get_all_posts
-      WPEvent::wp.getPosts blog_id: 0,
+      Compostr::wp.getPosts blog_id: 0,
         filter: { post_type: @cpt_class.post_type, number: 100_000 }
     end
 

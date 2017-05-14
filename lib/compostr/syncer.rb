@@ -47,7 +47,7 @@ module Compostr
 
         debug "Upload Post ##{new_post.post_id} with wp-content: #{content}"
 
-        post_id = WPEvent::wp.editPost(blog_id: 0,
+        post_id = Compostr::wp.editPost(blog_id: 0,
                                        post_id: new_post.post_id,
                                        content: content)
         if post_id
@@ -67,7 +67,7 @@ module Compostr
 
         debug "Create Post with wp-content: #{content}"
 
-        new_post_id = WPEvent::wp.newPost(blog_id: 0,
+        new_post_id = Compostr::wp.newPost(blog_id: 0,
                                           content: content)
         if new_post_id
           info "#{new_post.class} with WP ID #{new_post_id} created"
