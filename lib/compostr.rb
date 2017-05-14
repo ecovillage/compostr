@@ -9,6 +9,7 @@ require 'compostr/custom_field_value'
 require 'compostr/custom_post_type'
 
 require 'compostr/entity_cache'
+require 'compostr/media_library_cache'
 
 require 'compostr/syncer'
 
