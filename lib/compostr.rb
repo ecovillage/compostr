@@ -5,6 +5,8 @@ require 'yaml'
 
 require 'compostr/logging'
 
+require 'compostr/wp_string'
+
 require 'compostr/custom_field_value'
 require 'compostr/custom_post_type'
 
