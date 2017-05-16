@@ -367,6 +367,9 @@ module Compostr
       if @title.to_s.strip != other_cpt_object.title.to_s.strip
         diff_fields["title"] = [@title, other_cpt_object.title]
       end
+      if @featured_image_id != other_cpt_object.featured_image_id
+        diff_fields["featured_image_id"] = [@featured_image_id, other_cpt_object.featured_image_id]
+      end
       if @content.to_s.strip != other_cpt_object.content.to_s.strip
         diff_fields["content"] = [@content, other_cpt_object.content]
       end
