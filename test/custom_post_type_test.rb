@@ -453,6 +453,12 @@ class CPTTest < Minitest::Test
     assert_equal({"content" => ['Spa ces', 'Space']}, movie.diff(other_movie))
   end
 
+  def test_diff_includes_featured_image_id
+    book = BookCPT.new content: 'See more inside!', title: 'The first book', featured_image_id: "20"
+    other_book = BookCPT.new content: 'See more inside!', title: 'The first book', featured_image_id: "21"
+    assert_equal({"featured_image_id" => ['20', '21']}, book.diff(other_book))
+  end
+
   def test_additional_field_action_ignore
     skip "Not yet implemented"
   end
