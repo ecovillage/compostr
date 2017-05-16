@@ -1,8 +1,8 @@
 module Compostr
   module WPString
     def self.wp_string string
-      content = string.strip
-      if !string.to_s.match(/img/)
+      content = string.to_s.strip
+      if !content.match(/img/)
         re = /<("[^"]*"|'[^']*'|[^'">])*>/
         if content.gsub(re, '') == ''
           return ''

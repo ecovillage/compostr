@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class WPStringTest < Minitest::Test
+  def test_accepts_all
+    assert_equal('', Compostr::WPString.wp_string(nil))
+    assert_equal('1.7', Compostr::WPString.wp_string(1.7))
+    assert_equal('Class', Compostr::WPString.wp_string(Class))
+  end
+
   def test_strip
     assert_equal('both',  Compostr::WPString.wp_string(' both '))
     assert_equal('left',  Compostr::WPString.wp_string('  left'))
