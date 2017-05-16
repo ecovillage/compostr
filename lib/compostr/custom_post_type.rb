@@ -39,7 +39,7 @@ module Compostr
       # def field_key=(new_value)
       #   field!('field_key') = new_value.to_s.strip
       # end
-      self.class_eval("def #{field_key.to_s}=(new_value); field!('#{field_key.to_s}').value = new_value.to_s.strip; end")
+      self.class_eval("def #{field_key.to_s}=(new_value); field!('#{field_key.to_s}').value = WPString.wp_string(new_value); end")
       # def field_key
       #   field?(field_key).value
       # end
