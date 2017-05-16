@@ -11,6 +11,9 @@ require 'compostr/custom_post_type'
 require 'compostr/entity_cache'
 require 'compostr/media_library_cache'
 
+require 'compostr/image_upload'
+require 'compostr/image_uploader'
+
 require 'compostr/syncer'
 
 # Get the loggers, get the config, expose WP
