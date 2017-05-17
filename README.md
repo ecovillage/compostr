@@ -32,11 +32,13 @@ Or install it yourself as:
 
 Define a CPT class like this (you still need Wordpress PHP code!):
 
-    class ProgrammingLanguage < Compostr::CustomPostType
-      wp_post_type 'programming_language' # `post_type` as known by WP
-      wp_custom_field_single 'awesomeness' # 'meta' field in WP, just one value is queried and set
-      wp_custom_field_multi 'further_links' # 'meta' field(s) in WP, can have multiple values
-    end
+```ruby
+class ProgrammingLanguage < Compostr::CustomPostType
+  wp_post_type 'programming_language' # `post_type` as known by WP
+  wp_custom_field_single 'awesomeness' # 'meta' field in WP, just one value is queried and set
+  wp_custom_field_multi 'further_links' # 'meta' field(s) in WP, can have multiple values
+end
+```
 
 Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically respond to `content`, `id`, `title` and `featured_image_id` (corresponding to the Wordpress `post_content`, `id`, `post_title` and `featured_image_id`).
 
