@@ -1,0 +1,62 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://wordpress.mydomain/xmlrpc.php
+    body:
+      encoding: UTF-8
+      string: '<?xml version="1.0" ?><methodCall><methodName>wp.newPost</methodName><params><param><value><array><data><value><i4>0</i4></value><value><string>admin</string></value><value><string>buzzword</string></value><value><struct><member><name>post_type</name><value><string>boardgame</string></value></member><member><name>post_status</name><value><string>publish</string></value></member><member><name>post_data</name><value><dateTime.iso8601>20170518T11:42:23</dateTime.iso8601></value></member><member><name>post_title</name><value><string>Dungeonlord</string></value></member><member><name>post_content</name><value><string></string></value></member><member><name>custom_fields</name><value><array><data/></array></value></member><member><name>terms_names</name><value><struct><member><name>language</name><value><array><data><value><string>Deutsch</string></value></data></array></value></member></struct></value></member><member><name>post_author</name><value><i4>1</i4></value></member></struct></value></data></array></value></param></params></methodCall>
+
+'
+    headers:
+      User-Agent:
+      - XMLRPC::Client (Ruby 2.3.1)
+      Content-Type:
+      - text/xml; charset=utf-8
+      Content-Length:
+      - '1056'
+      Connection:
+      - keep-alive
+      Accept-Encoding:
+      - identity
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 18 May 2017 09:31:43 GMT
+      Server:
+      - Apache/2.2.14 (Ubuntu)
+      X-Powered-By:
+      - PHP/5.3.2-1ubuntu4.30
+      Connection:
+      - close
+      X-Content-Security-Policy:
+      - allow *
+      Content-Security-Policy:
+      - frame-ancestors 'self'
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '179'
+      Content-Type:
+      - text/xml; charset=UTF-8
+    body:
+      encoding: UTF-8
+      string: |
+        <?xml version="1.0" encoding="UTF-8"?>
+        <methodResponse>
+          <params>
+            <param>
+              <value>
+              <string>2766</string>
+              </value>
+            </param>
+          </params>
+        </methodResponse>
+    http_version: 
+  recorded_at: Thu, 18 May 2017 09:42:25 GMT
+recorded_with: VCR 3.0.3
