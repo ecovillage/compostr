@@ -7,19 +7,19 @@ module Compostr
   # A typical client will just `extend WPEvent::Logging` .
   module Logging
     def debug msg
-      WPEvent.logger.debug msg
+      Compostr.logger.debug msg
     end
     def info msg
-      WPEvent.logger.info msg
+      Compostr.logger.info msg
     end
     def warn msg
-      WPEvent.logger.warn msg
+      Compostr.logger.warn msg
     end
     def error msg
-      WPEvent.logger.error msg
+      Compostr.logger.error msg
     end
     def fatal msg
-      WPEvent.logger.fatal msg
+      Compostr.logger.fatal msg
     end
   end
 end
