@@ -68,12 +68,13 @@ module Compostr
         debug "Create Post with wp-content: #{content}"
 
         new_post_id = Compostr::wp.newPost(blog_id: 0,
-                                          content: content)
+                                           content: content)
         if new_post_id
           info "#{new_post.class} with WP ID #{new_post_id} created"
         else
           info "#{new_post.class} not created!"
         end
+        new_post.post_id = new_post_id
       end
     end
 
