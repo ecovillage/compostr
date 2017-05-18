@@ -2,6 +2,7 @@ require "compostr/version"
 
 require 'ostruct'
 require 'yaml'
+require 'rubypress'
 
 require 'compostr/logging'
 
