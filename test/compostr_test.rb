@@ -21,7 +21,7 @@ class CompostrTest < Minitest::Test
         assert_equal(false, Compostr.delete_post("100000"))
       end
       VCR.use_cassette('wp_successful_post_deletion') do
-        #assert_equals(false, Compostr.delete_post("1"))
+        assert_equal(true, Compostr.delete_post("1"))
       end
     end
   end
