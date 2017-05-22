@@ -48,4 +48,13 @@ module Compostr
   def self.logger= logger
     @@logger = logger
   end
+
+  # Delete a post with given wordpress post_id
+  def self.delete_post post_id
+    begin
+      Compostr::wp.deletePost(blog_id: 0, post_id: post_id)
+    rescue XMLRPC::FaultException
+      false
+    end
+  end
 end
