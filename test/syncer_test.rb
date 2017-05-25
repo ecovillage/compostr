@@ -10,6 +10,12 @@ class BoardgameCPT < Compostr::CustomPostType
 end
 
 class CPTTest < Minitest::Test
+  @@conf = {
+    host:     "wordpress.mydomain",
+    username: "admin",
+    password: "buzzword"
+  }
+
   def setup
     WebMock.disable_net_connect!
     ##stub_request(:post, "http://wordpress.mydomain/xmlrpc.php").
@@ -18,12 +24,7 @@ class CPTTest < Minitest::Test
   end
 
   def test_new_entity
-    conf = {
-      host:     "wordpress.mydomain",
-      username: "admin",
-      password: "buzzword"
-    }
-    YAML.stub(:load_file, conf, Minitest::Mock.new) do
+    YAML.stub(:load_file, @@conf, Minitest::Mock.new) do
       dungeonlord = BoardgameCPT.new name: 'Dungeonlord'
       syncer = Compostr::Syncer.new nil
       VCR.use_cassette('syncer_push_dungeonlord') do
