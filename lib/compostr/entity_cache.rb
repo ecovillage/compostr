@@ -74,13 +74,16 @@ module Compostr
     def by_post_id id
       if @full_data.nil?
         Compostr::wp.getPost blog_id: 0,
-                              post_id: id
+                             post_id: id
       else
-        raise
+        @full_data.find do |p|
+          p["post_id"] == id
+        end
       end
     end
 
     private
+
     def get_all_posts
       Compostr::wp.getPosts blog_id: 0,
         filter: { post_type: @cpt_class.post_type, number: 100_000 }
@@ -93,6 +96,5 @@ module Compostr
         [uuid, post["post_id"]]
       end.to_h
     end
-
   end
 end
