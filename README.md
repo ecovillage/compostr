@@ -53,9 +53,15 @@ Global configuration is given in `compostr.conf`, where connection information t
     username: "admin"
     password: "buzzword"
 
-### Logger
+### Logging/Logger
+
+Although logging should not be a main Compostr concern, it was helpful to include some handy helpers.
 
 Use Compostr::logger if you want to feed Compostrs logs into your main applications log or redirect them somewhere.
+
+To mixin `info`, `warn` and other logging functions into your class/module do an `include Compostr::Logging`.
+
+To make Compostr-logs use your logger, set it like this: `Compostr::logger = <mylogger`.
 
 ### EntityCache
 

@@ -3,8 +3,8 @@ require 'logger'
 module Compostr
   # Module to extend to get easy access to standard log functions.
   # These are debug, info, warn, error and fatal.
-  # All log functions use the WPEvent.logger (which can be customized).
-  # A typical client will just `extend WPEvent::Logging` .
+  # All log functions use the Compostr.logger (which can be customized).
+  # A typical client will just `extend Compostr::Logging` .
   module Logging
     def debug msg
       Compostr.logger.debug msg
