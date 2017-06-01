@@ -8,6 +8,8 @@ Its a heavy WIP.
 
 Compostr is a somewhat weirdly engineered wrapper to decorate ruby classes such that they can be pushed to (or fetched from) a wordpress installation that defines corresponing CPTs (Custom Post Types).
 
+It would be fun to discuss on `Compostr`s development history and design decisions, but unfortunately that is out of scope for the time being.
+
 Licensed under the GPLv3+, Copyright 2016, 2017 Felix Wolfsteller.
 
 ## Installation
