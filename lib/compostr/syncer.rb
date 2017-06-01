@@ -80,8 +80,8 @@ module Compostr
 
     # Add language term and post author data to WP content hash.
     def adjust_content content
-      content[:terms_names]  = { 'language' => ['Deutsch'] }
-      content[:post_author] = 1
+      content[:terms_names]  = { 'language' => [ Compostr::config.language_term || 'Deutsch' ] }
+      content[:post_author] = Compostr::config.author_id || 1
       # publish? Date ... ?
     end
   end
