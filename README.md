@@ -52,6 +52,8 @@ Global configuration is given in `compostr.conf`, where connection information t
     host:     "wordpress.mydomain"
     username: "admin"
     password: "buzzword"
+    language_term: "Deutsch"
+    author_id: 1
 
 ### Logging/Logger
 
@@ -65,7 +67,7 @@ To make Compostr-logs use your logger, set it like this: `Compostr::logger = <my
 
 ### EntityCache
 
-Until you provide some Wordpress PHP code to querie custom post types via their Custom (meta) Fields, to query and work with CPTs, all data will be read into memory using `Compostr::EntityCache`.
+Until you provide some Wordpress PHP code to query custom post types via their Custom (meta) Fields, to query and work with CPTs, all data will be read into memory using `Compostr::EntityCache`.
 
 ### Syncer
 
