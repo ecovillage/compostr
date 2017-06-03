@@ -85,8 +85,11 @@ module Compostr
     private
 
     def get_all_posts
-      Compostr::wp.getPosts blog_id: 0,
+      Compostr::logger.debug "Get all #{@cpt_class.post_type} posts"
+      all_posts = Compostr::wp.getPosts blog_id: 0,
         filter: { post_type: @cpt_class.post_type, number: 100_000 }
+      Compostr::logger.debug "Got all #{all_posts.count} #{@cpt_class.post_type} posts"
+      return all_posts
     end
 
     def uuid_pid_map
