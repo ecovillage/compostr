@@ -116,9 +116,9 @@ module Compostr
           # strip ?
           @title = v
         elsif k == :content
-          @content = v
+          self.content= v
         elsif k == :post_id
-          @post_id = v
+          self.post_id= v
         elsif k == :featured_image_id
           @featured_image_id = v
         # Better: has_custom_field?
