@@ -35,6 +35,8 @@ Or install it yourself as:
 Define a CPT class like this (you still need Wordpress PHP code!):
 
 ```ruby
+require 'compostr'
+
 class ProgrammingLanguage < Compostr::CustomPostType
   wp_post_type 'programming_language' # `post_type` as known by WP
   wp_custom_field_single 'awesomeness' # 'meta' field in WP, just one value is queried and set
@@ -43,6 +45,17 @@ end
 ```
 
 Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically respond to `content`, `id`, `title` and `featured_image_id` (corresponding to the Wordpress `post_content`, `id`, `post_title` and `featured_image_id`).
+
+```ruby
+require 'compostr'
+
+fooby = ProgrammingLanguage.new title:         'Fooby',
+                                content:       'Easy to learn language',
+                                awesomeness:   '3',
+                                further_links: ['foo://by', 'foo://byebye'
+# Reading this I agree the API is awkward
+Compostr::Syncer.new(nil).merge_push fooby, nil
+```
 
 Compostr comes prepared with `UUID` information of CPT instances, to e.g. distinctlive identify entities across different WP instances where entities might have different `post_id`s..
 

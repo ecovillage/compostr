@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["felix.wolfsteller@gmail.com"]
 
   spec.summary       = %q{Ease interaction with Custom Post Types of a Wordpress installation.}
-  spec.description   = %q{One way to ask a wordpress installation about specific custom post type instances and tell it about them.}
+  spec.description   = %q{Compostr provides one way to ask a wordpress installation about specific custom post type instances and tell it about them.}
   spec.homepage      = 'https://github.com/ecovillage/compostr'
   spec.licenses      = ['GPL-3.0+']
 
