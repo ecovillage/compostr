@@ -7,7 +7,7 @@ module Compostr
 
     def initialize image_store, media_cache
       if !image_store
-        Compostr.logger.warn "ImageUploader will not uploading anything (no image store specified)."
+        Compostr.logger.warn "ImageUploader will not upload anything (no image store specified)."
       end
       @image_store = image_store
       @media_cache = media_cache
