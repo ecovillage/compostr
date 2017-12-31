@@ -52,12 +52,12 @@ require 'compostr'
 fooby = ProgrammingLanguage.new title:         'Fooby',
                                 content:       'Easy to learn language',
                                 awesomeness:   '3',
-                                further_links: ['foo://by', 'foo://byebye'
+                                further_links: ['foo://by', 'foo://byebye']
 # Reading this I agree the API is awkward
 Compostr::Syncer.new(nil).merge_push fooby, nil
 ```
 
-Compostr comes prepared with `UUID` information of CPT instances, to e.g. distinctlive identify entities across different WP instances where entities might have different `post_id`s..
+Compostr comes prepared with `UUID` information of CPT instances, to e.g. distinctively identify entities across different WP instances where entities might have different `post_id`s.
 
 ### Configuration
 
@@ -74,15 +74,15 @@ Global configuration is given in `compostr.conf`, where connection information t
 
 Although logging should not be a main Compostr concern, it was helpful to include some handy helpers.
 
-Use Compostr::logger if you want to feed Compostrs logs into your main applications log or redirect them somewhere.
+Use `Compostr::logger` if you want to feed Compostrs logs into your main applications log or redirect them somewhere.
 
 To mixin `info`, `warn` and other logging functions into your class/module do an `include Compostr::Logging`.
 
-To make Compostr-logs use your logger, set it like this: `Compostr::logger = <mylogger`.
+To make Compostr-logs use your logger, set it like this: `Compostr::logger = mylogger`.
 
 ### EntityCache
 
-Until you provide some Wordpress PHP code to query custom post types via their Custom (meta) Fields, to query and work with CPTs, all data will be read into memory using `Compostr::EntityCache`.
+Until you provide some Wordpress PHP code to query custom post types via their Custom ("meta") Fields, to query and work with CPTs, all data will be read into memory using `Compostr::EntityCache`.
 
 ### Syncer
 
@@ -102,6 +102,6 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/ecovillage/compostr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/ecovillage/compostr. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](https://contributor-covenant.org) code of conduct.
 
 That said, just drop me a line.
