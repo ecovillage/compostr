@@ -4,7 +4,8 @@ module Compostr
   #
   # Besides the post_id, title, content and featured_image (id) that
   # define a post, the CustomPostType likely will own custom field
-  # values.  These are specified with wp_custom_field_single and wp_custom_field_multi (depending on their type).
+  # values.  These are specified with wp_custom_field_single and
+  # wp_custom_field_multi (depending on their type).
   #
   # To loop over the fields, use @fields and @multi_fields.
   class CustomPostType
