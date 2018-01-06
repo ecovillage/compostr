@@ -33,4 +33,11 @@ module Compostr
     def key; nil; end
     def value; nil; end
   end
+
+  # Shortcut to mark fields for deletion.
+  class DeleteCustomFieldValue < CustomFieldValue
+    def initialize(id)
+      super(id, nil, nil)
+    end
+  end
 end
