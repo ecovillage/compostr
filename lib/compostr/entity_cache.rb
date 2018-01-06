@@ -1,4 +1,10 @@
 module Compostr
+  # An EntityCache stores a wordpress response to the query of
+  # a Custom Post Type.  All is done in memory, which is pretty nasty.
+  # The EntityCache creates two indexes (on name and uuid attribute/custom
+  # field) which are created on-the fly when accessed.
+  # Contrary to what its name suggests, the EntityCache does not store
+  # instances of the given CustomPostType subclass, but the wordpress response.
   class EntityCache
     attr_accessor :cpt_class, :name_id_map, :uuid_id_map
     attr_accessor :full_data

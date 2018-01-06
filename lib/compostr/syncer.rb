@@ -7,11 +7,13 @@ module Compostr
     attr_accessor :image_uploader
     attr_accessor :synced_uuids
     attr_accessor :updated_uuids
+    attr_accessor :force
 
-    def initialize image_uploader
+    def initialize image_uploader, force=false
       @image_uploader = image_uploader
       @synced_uuids   = []
       @updated_uuids  = []
+      @force          = force
     end
 
     # Updates or creates Custom Post Types Posts.
