@@ -355,7 +355,7 @@ module Compostr
       end
       # Multi-Fields exclusive to the other.
       (other_cpt_object.multi_fields.keys - @multi_fields.keys).each do |f|
-        diff_fields[f] = [nil, other_cpt_object.multi_fields[f].value]
+        diff_fields[f] = [nil, other_cpt_object.multi_fields[f].map(&:value)]
       end
       # Mutual Multi-fields
       (@multi_fields.keys | other_cpt_object.multi_fields.keys).each do |f|
