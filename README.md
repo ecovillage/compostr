@@ -10,7 +10,7 @@ Compostr is a somewhat weirdly engineered wrapper to decorate ruby classes such 
 
 It would be fun to discuss on `Compostr`s development history and design decisions, but unfortunately that is out of scope for the time being.
 
-Licensed under the GPLv3+, Copyright 2016, 2017 Felix Wolfsteller.
+Licensed under the GPLv3+, Copyright 2016, 2017, 2018 Felix Wolfsteller.
 
 ## Installation
 
@@ -58,6 +58,8 @@ Compostr::Syncer.new(nil).merge_push fooby, nil
 ```
 
 Compostr comes prepared with `UUID` information of CPT instances, to e.g. distinctively identify entities across different WP instances where entities might have different `post_id`s.
+
+There are some tests implemented, which illustrate further usage.
 
 ### Configuration
 
