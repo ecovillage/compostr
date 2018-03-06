@@ -20,11 +20,11 @@ module Compostr
     #
     # The post will be identified by uuid (or not).
     #
-    #   new_post_content
+    #   new_post_content (a CustomPostType)
     #     The data that **should** be in wordpress (without knowing
     #     of wordpress post or custom field ids).  Usually descendant of CustomPostType.
     #
-    #   old_post
+    #   old_post (a hash)
     #     The data currently available in wordpress (including
     #     wordpress post id, custom field ids).
     def merge_push new_post, old_post
