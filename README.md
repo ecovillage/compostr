@@ -4,7 +4,7 @@
 
 Compostr is extracted code from the [`wp_event` gem](https://github.com/ecovillage/wp_event), a solution to feed a specific wordpress instance with specific Custom Post Type instances.
 
-Its a heavy WIP.
+Its still a heavy WIP, although used in hacky production.
 
 Compostr is a somewhat weirdly engineered wrapper to decorate ruby classes such that they can be pushed to (or fetched from) a wordpress installation that defines corresponing CPTs (Custom Post Types).
 
