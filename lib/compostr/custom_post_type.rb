@@ -310,6 +310,7 @@ module Compostr
       supported_single_fields.include? field_name
     end
 
+    # Fetched from wordpress/ Post-ID known?
     def in_wordpress?
       post_id.to_s != '' && !!post_id
     end

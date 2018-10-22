@@ -16,13 +16,14 @@ module Compostr
       @force          = force
     end
 
-    # Updates or creates Custom Post Types Posts.
+    # Updates or creates a Custom Post Types Post.
     #
     # The post will be identified by uuid (or not).
     #
     #   new_post_content (a CustomPostType)
     #     The data that **should** be in wordpress (without knowing
-    #     of wordpress post or custom field ids).  Usually descendant of CustomPostType.
+    #     of wordpress post or custom field ids).
+    #     Usually descendant of Compostr::CustomPostType.
     #
     #   old_post (a hash)
     #     The data currently available in wordpress (including
@@ -50,8 +51,8 @@ module Compostr
         debug "Upload Post ##{new_post.post_id} with wp-content: #{content}"
 
         post_id = Compostr::wp.editPost(blog_id: 0,
-                                       post_id: new_post.post_id,
-                                       content: content)
+                                        post_id: new_post.post_id,
+                                        content: content)
         if post_id
           info "#{new_post.class} ##{new_post.post_id} updated"
         else
