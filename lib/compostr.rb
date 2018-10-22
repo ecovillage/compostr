@@ -36,7 +36,8 @@ module Compostr
   def self.wp
     @wp ||= Rubypress::Client.new(host: config.host,
                                   username: config.username,
-                                  password: config.password)
+                                  password: config.password,
+                                  use_ssl:  config.use_ssl)
   end
 
   # Access the logger, initialize and memoize it on demand.

@@ -71,6 +71,7 @@ Global configuration is given in `compostr.conf`, where connection information t
     password: "buzzword"
     language_term: "Deutsch"
     author_id: 1
+    use_ssl: true
 
 ### Logging/Logger
 
