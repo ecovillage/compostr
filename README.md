@@ -71,7 +71,10 @@ Global configuration is given in `compostr.conf`, where connection information t
     password: "buzzword"
     language_term: "Deutsch"
     author_id: 1
-    use_ssl: true
+    use_ssl:  true
+    path:     "/blog/xmlrpc.php"
+
+Most of the values directly relate to the [RubyPress configuration](https://github.com/zachfeldman/rubypress).
 
 ### Logging/Logger
 
