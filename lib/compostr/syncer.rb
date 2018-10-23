@@ -28,6 +28,8 @@ module Compostr
     #   old_post (a hash)
     #     The data currently available in wordpress (including
     #     wordpress post id, custom field ids).
+    #
+    # Returns post_id (of WordPress) or nil (if failure).
     def merge_push new_post, old_post
       if old_post && old_post.in_wordpress?
         info "#{new_post.class.name} with UUID #{new_post.uuid} found, updating"
@@ -58,6 +60,7 @@ module Compostr
         else
           info "#{new_post.class} ##{new_post.post_id} not updated!"
         end
+        return post_id
       else
         # Easy, create new one
         info "#{new_post.class.name} with UUID #{new_post.uuid} not found, creating"
@@ -78,6 +81,7 @@ module Compostr
           info "#{new_post.class} not created!"
         end
         new_post.post_id = new_post_id
+        return new_post_id
       end
     end
 
