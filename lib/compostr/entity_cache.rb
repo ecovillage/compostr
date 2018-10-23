@@ -88,6 +88,12 @@ module Compostr
       end
     end
 
+    def flush
+      @name_id_map = nil
+      @uuid_id_map = nil
+      @full_data   = nil
+    end
+
     private
 
     def get_all_posts
