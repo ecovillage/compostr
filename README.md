@@ -44,7 +44,7 @@ class ProgrammingLanguage < Compostr::CustomPostType
 end
 ```
 
-Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically respond to `content`, `id`, `title` and `featured_image_id` (corresponding to the Wordpress `post_content`, `id`, `post_title` and `featured_image_id`).
+Now `ProgrammingLanguage`s can be queried and posted to your Wordpress installation.  Instances of this class will automatically respond to `content`, `id`, `title`, `excerpt` and `featured_image_id` (corresponding to the Wordpress `post_content`, `id`, `post_title`, `post_excerpt` and `featured_image_id`).
 
 ```ruby
 require 'compostr'

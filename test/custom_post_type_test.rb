@@ -58,16 +58,18 @@ class CPTTest < Minitest::Test
                    post_status:  'publish',
                    post_title:   '',
                    post_content: '',
+                   post_excerpt: '',
                    custom_fields: [
                      { key: 'price', value: ''},
                    ]},
                  content_hash)
   end
 
-  def test_title_content_featured_image_id
-    book = BookCPT.new content: 'See more inside!', title: 'The first book', featured_image_id: "20"
+  def test_title_content_featured_image_id_excerpt
+    book = BookCPT.new content: 'See more inside!', title: 'The first book', excerpt: 'Literature!', featured_image_id: "20"
     assert_equal "The first book",   book.title
     assert_equal "See more inside!", book.content
+    assert_equal "Literature!",      book.excerpt
     assert_equal "20",               book.featured_image_id
   end
 
@@ -110,25 +112,27 @@ class CPTTest < Minitest::Test
 
   # json {"uuid":"2eda0aca-cf1b-11e5-8631-78e7d1f4cba4","firstname":"","lastname":"","description":null,"image_url":null}
   def test_to_content_hash
-    new_book = BookCPT.new title: 'Going home', price: '12.2', uuid: '1122', content: 'back-coming for beginners'
+    new_book = BookCPT.new title: 'Going home', price: '12.2', uuid: '1122', content: 'back-coming for beginners', excerpt: 'Bestseller'
     content_hash = new_book.to_content_hash
     content_hash.delete :post_data
     assert_equal({ post_type:   'books',
                    post_status: 'publish',
                    post_title:  'Going home',
                    post_content:  'back-coming for beginners',
+                   post_excerpt:  'Bestseller',
                    custom_fields: [
                      { key: 'price', value: '12.2'},
                      { key: 'uuid', value: '1122' } ]},
                  content_hash)
     book = BookCPT.new title: 'home', price: '12.2', uuid: '1122',
-      featured_image_id: '2', post_id: '22'
+      featured_image_id: '2', post_id: '22', excerpt: 'Bestseller!'
     content_hash = book.to_content_hash
     content_hash.delete :post_data
     assert_equal({ post_type:    'books',
                    post_status:  'publish',
                    post_title:   'home',
                    post_content: '',
+                   post_excerpt:  'Bestseller!',
                    post_thumbnail: '2',
                    custom_fields: [
                      { key: 'price', value: '12.2'},
@@ -434,6 +438,7 @@ class CPTTest < Minitest::Test
     movie = MovieCPT.new name: 'Menula One', year: '2008', content: '<h1>abc</h1>'
     content_hash = { "post_type"     => "movie",
                      "post_title"    => ' Menula One',
+                     "post_excerpt"  => '',
                      "custom_fields" => [
                        {"key" => "year", "value" => "2008 "},
                      ]}

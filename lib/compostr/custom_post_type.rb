@@ -2,14 +2,14 @@ module Compostr
   # Base class to inherit from for Classes that map to Wordpress
   # Custom Post Types.
   #
-  # Besides the post_id, title, content and featured_image (id) that
+  # Besides the post_id, title, content, excerpt and featured_image (id) that
   # define a post, the CustomPostType likely will own custom field
   # values.  These are specified with wp_custom_field_single and
   # wp_custom_field_multi (depending on their type).
   #
   # To loop over the fields, use @fields and @multi_fields.
   class CustomPostType
-    attr_accessor :post_id, :title, :content, :featured_image_id
+    attr_accessor :post_id, :title, :content, :excerpt, :featured_image_id
     # TODO rename to single_fields?
     attr_accessor :fields, :multi_fields
 
@@ -118,6 +118,8 @@ module Compostr
           @title = v
         elsif k == :content
           self.content= v
+        elsif k == :excerpt
+          self.excerpt= v
         elsif k == :post_id
           self.post_id= v
         elsif k == :featured_image_id
@@ -199,6 +201,7 @@ module Compostr
       return nil if content_hash.nil?
       entity = new(post_id: content_hash["post_id"],
                    content: content_hash["post_content"],
+                   excerpt: content_hash["post_excerpt"],
                    title:   content_hash["post_title"])
 
       custom_fields_list = content_hash["custom_fields"] || []
@@ -234,6 +237,7 @@ module Compostr
         post_data:     Time.now,
         post_title:    title    || '', # why does content need '@'?
         post_content:  @content || '',
+        post_excerpt:  @excerpt || '',
         custom_fields: @fields.map{|k,v| v.to_hash} | @multi_fields.flat_map{|k,v| v.flat_map(&:to_hash)}
       }
       if featured_image_id
@@ -368,6 +372,9 @@ module Compostr
       end
       if @title.to_s.strip != other_cpt_object.title.to_s.strip
         diff_fields["title"] = [@title, other_cpt_object.title]
+      end
+      if @excerpt.to_s.strip != other_cpt_object.excerpt.to_s.strip
+        diff_fields["excerpt"] = [@excerpt, other_cpt_object.excerpt]
       end
       if @featured_image_id != other_cpt_object.featured_image_id
         diff_fields["featured_image_id"] = [@featured_image_id, other_cpt_object.featured_image_id]
